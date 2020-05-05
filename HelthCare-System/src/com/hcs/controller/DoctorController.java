@@ -40,13 +40,14 @@ public class DoctorController {
 			ps.setString(6, doctor.getWorkHospital());
 
 			ps.execute();
-			 connection.close();
-			 output =  "{\"status\":\"success\", \"data\": \"Item Insert\"}"; 
+			String newdoctors = "Doctors";
+			 //connection.close();
+			output = "{\"status\":\"success\", \"data\": \"" + newdoctors + "\"}"; 
 
 		}
 		 catch (Exception e)
 		 {
-			 output = "{\"status\":\"error\", \"data\":\"Error while inserting the item.\"}"; 
+			 output = "{\"status\":\"error\", \"data\":\"Error while doctor the item.\"}"; 
 		 System.err.println(e.getMessage());
 		 }
 		 return output; 
@@ -55,8 +56,8 @@ public class DoctorController {
 	}
 
 	public String readDoctors() {
-		List<Doctor> doctors = new ArrayList<>();
 		String output="";
+		
 		try {
 			connection = DBConnection.getConnection();
 			if (connection == null) {
@@ -69,19 +70,14 @@ public class DoctorController {
 			Statement stmt = connection.createStatement();
 			rs = stmt.executeQuery("select * from doctor");
 			
+			
 
 			// iterate through the rows in the result set
 			while (rs.next()) {
-				Doctor doc = new Doctor();
-				doc.setDoctorID(rs.getInt("DoctorID"));
-				doc.setDoctorName(rs.getString("DoctorName"));
-				doc.setPhoneNumber(rs.getInt("PhoneNumber"));
-				doc.setEmail(rs.getString("Email"));
-				doc.setDoctorType(rs.getString("WorkHospital"));
 				
 				output+="<tr>" +
-						"<td id=\"UpdateDoctorID\" name=\"UpdateDoctorID\">" + 
-						"<input id=\"\" name=\"\" value=\""+ rs.getInt("DoctorID") +"\" type=\"hidden\">" + 
+						"<td id=\'UpdateDoctorID\' name=\'UpdateDoctorID\'>" + 
+						"<input  value=\'"+rs.getInt("DoctorID")+"\' type=\'hidden\'>" + 
 						 rs.getInt("DoctorID") +
 						"</td> "
 						+"<td>"+rs.getString("DoctorName")+"</td>"
@@ -94,12 +90,13 @@ public class DoctorController {
 						"</td>" +
 						"<td>" + 
 						"<input name='btnRemove' type='button'" + 
-						"value='Remove' class='btnRemove btn btn-danger' data-itemid='"+rs.getInt("DoctorID")+"'></td>" + 
+						"value='Remove' class='btnRemove btn btn-danger' data-doctorid='"+rs.getInt("DoctorID")+"'></td>" + 
 						"</tr>";
 
-				doctors.add(doc);
+				
 			}
-			connection.close();
+			
+//			connection.close();
 
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
@@ -127,10 +124,11 @@ public class DoctorController {
 			ps.setInt(6, doctor.getDoctorID());
 			// execute the statement
 			ps.execute();
-			connection.close();
-			output = "Updated successfully";
+			//connection.close();
+			String newdoctors ="doctors";
+			output = "{\"status\":\"success\", \"data\": \"" + newdoctors + "\"}";
 		} catch (Exception e) {
-			output = "Error while updating the item.";
+			output = "{\"status\":\"error\", \"data\":\"Error while updating the item.\"}";
 			System.err.println(e.getMessage());
 		}
 		return output;
@@ -151,10 +149,11 @@ public class DoctorController {
 			ps.setInt(1, Integer.parseInt(DoctorID));
 			// execute the statement
 			ps.execute();
-			connection.close();
-			output = "Deleted successfully";
+			//connection.close();
+			String newdoctors = readDoctors();
+			output = "{\"status\":\"success\", \"data\": \"" + newdoctors + "\"}";
 		} catch (Exception e) {
-			output = "Error while deleting the item. -"+ e.getMessage();
+			output = "{\"status\":\"error\", \"data\":\"Error while deleting the item.\"}";
 			System.err.println(e.getMessage());
 		}
 		return output;
@@ -185,7 +184,7 @@ public class DoctorController {
 				doc.setEmail(rs.getString("Email"));
 				doc.setDoctorType(rs.getString("DoctorType"));
 			}
-			connection.close();
+			//connection.close();
 
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
