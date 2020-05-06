@@ -309,133 +309,102 @@
 			<div class="page-title-box">
 				<div class="row align-items-center">
 					<div class="col-sm-6">
-						<h4 class="page-title">Doctor</h4>
+						<h4 class="page-title">Dashboard</h4>
 					</div>
 					<div class="col-sm-6">
 						<ol class="breadcrumb float-right">
 							<li class="breadcrumb-item"><a href="javascript:void(0);">HCS</a></li>
-							<li class="breadcrumb-item active">Doctor</li>
+							<li class="breadcrumb-item active">Dashboard</li>
 						</ol>
 					</div>
 				</div>
 				<!-- end row -->
 			</div>
 
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="card m-b-30">
-						<div class="card-body">
-
-							<h4 class="mt-0 header-title">Doctor Details</h4>
-
-							<form id="formdoctor" name="formdoctor">
-								<div class="form-group">
-									<label>Doctor Name</label> <input type="text"
-										class="form-control" name="DoctorName" id="doctorname"
-										required placeholder="Enter a doctor name" />
-								</div>
-
-
-								<div class="form-group">
-									<label>E-Mail</label>
-									<div>
-										<input type="email" class="form-control" required
-											parsley-type="email" name="Email" id="email"
-											placeholder="Enter a valid e-mail" />
-									</div>
-								</div>
-
-
-								<div class="form-group">
-									<label>Phone Number</label> <input type="text"
-										class="form-control" name="PhoneNumber" id="phonenumber"
-										required placeholder="Enter a phone number" />
-								</div>
-								<div class="form-group">
-									<label>Doctor Specialization</label> <input type="text"
-										class="form-control" name="DoctorType"
-										id="doctorspecialization" required
-										placeholder="Enter a doctor specialization" />
-								</div>
-
-								<div class="form-group">
-									<label>Work Hospital</label> <input type="text"
-										class="form-control" name="WorkHospital" id="workhospital"
-										required placeholder="Enter a work hospital" /> <input
-										type="hidden" id="DoctorIDSave" name="DoctorIDSave" value="">
-								</div>
-						</div>
-
-
-
-						<div class="form-group">
-							<div>
-								<input type="button" value="Save" id="btnSave" name="btnsave"
-									class="btn btn-primary waves-effect waves-light m-l-5">
-
-								<button type="reset"
-									class="btn btn-secondary waves-effect m-l-5">Cancel</button>
-							</div>
-						</div>
-						</form>
-
-						<div id="alertSuccess"
-							class="alert alert-success alert-dismissible"></div>
-						<div id="alertError" class="alert alert-danger alert-dismissible">
-
-						</div>
-					</div>
-				</div>
-				<!-- end col -->
-
-			</div>
-			<!-- end row -->
-
+<!-- start page content -->
 
 			<div class="row">
-				<div class="col-12">
-					<div class="card m-b-30">
-						<div class="card-body">
 
-							<h4 class="mt-0 header-title">Doctors List</h4>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="card">
+                        <div class="card-heading p-4">
+                            <div class="mini-stat-icon float-right">
+                                <i class="mdi mdi-calendar-edit bg-primary  text-white"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-16">Appointments</h5>
+                            </div>
+                            <h3 class="mt-4">43,225</h3>
+                            <div class="progress mt-4" style="height: 4px;">
+                                <div class="progress-bar bg-primary" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <p class="text-muted mt-2 mb-0">Last Month<span class="float-right">75%</span></p>
+                            <a href="#" class="btn btn-primary waves-effect waves-light">View Details</a>
+                        </div>
+                    </div>
+                </div>
 
-							<div class="table-rep-plugin">
-								<div class="table-responsive b-0"
-									data-pattern="priority-columns">
-									<table id="DoctorTable" class="table  table-striped">
-										<thead>
-											<tr>
-												<th>Doctor Id</th>
-												<th data-priority="1">Doctor Name</th>
-												<th data-priority="3">Doctor Email</th>
-												<th data-priority="1">Phone Number</th>
-												<th data-priority="3">Doctor Specialization</th>
-												<th data-priority="3">Work Hospital</th>
-												<th data-priority="6">Update</th>
-												<th data-priority="6">Remove</th>
-											</tr>
-										</thead>
-										<tbody id="DoctorTableBody">
-											<%
-												out.print(doctorController.readDoctors());
-											%>
-										</tbody>
-									</table>
-								</div>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="card">
+                        <div class="card-heading p-4">
+                            <div class="mini-stat-icon float-right">
+                                <i class="mdi mdi-doctor bg-success text-white"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-16">Doctors</h5>
+                            </div>
+                            <h3 class="mt-4">665</h3>
+                            <div class="progress mt-4" style="height: 4px;">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 88%" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <p class="text-muted mt-2 mb-0">Active<span class="float-right">90%</span></p>
+                            <a href="Doctor.jsp" class="btn btn-primary waves-effect waves-light">View Details</a>
+                        </div>
+                    </div>
+                </div>
 
-							</div>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="card">
+                        <div class="card-heading p-4">
+                            <div class="mini-stat-icon float-right">
+                                <i class="mdi mdi-hospital-building bg-warning text-white"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-16">Hospitals</h5>
+                            </div>
+                            <h3 class="mt-4">44</h3>
+                            <div class="progress mt-4" style="height: 4px;">
+                                <div class="progress-bar bg-warning" role="progressbar" style="width: 68%" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <p class="text-muted mt-2 mb-0">Previous period<span class="float-right">68%</span></p>
+                            <a href="#" class="btn btn-primary waves-effect waves-light">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-6 col-xl-3">
+                    <div class="card">
+                        <div class="card-heading p-4">
+                            <div class="mini-stat-icon float-right">
+                                <i class="mdi mdi-file-document-edit bg-danger text-white"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-16">Lab Tests</h5>
+                            </div>
+                            <h3 class="mt-4">97,654</h3>
+                            <div class="progress mt-4" style="height: 4px;">
+                                <div class="progress-bar bg-danger" role="progressbar" style="width: 82%" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <p class="text-muted mt-2 mb-0">Previous period<span class="float-right">82%</span></p>
+                            <a href="#" class="btn btn-primary waves-effect waves-light">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                
 
-						</div>
-					</div>
-				</div>
-				<!-- end col -->
-			</div>
-
-
-
-		</div>
-		<!-- end container-fluid -->
-	</div>
+            </div>
+            <!-- end page content -->
+            
 	<!-- end wrapper -->
 
 	<!-- Footer -->
@@ -459,7 +428,7 @@
 	<script src="assets/js/jquery.slimscroll.js"></script>
 	<script src="assets/js/waves.min.js"></script>
 	<!--  <script type="text/javascript" src="Components/Doctor.js"></script> -->
-	<script type="text/javascript" src="Components/Doctor.js"></script>
+	
 	<!-- Parsley js -->
 
 	<!-- App js -->
